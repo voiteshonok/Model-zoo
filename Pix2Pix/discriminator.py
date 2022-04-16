@@ -50,23 +50,31 @@ class Discriminator(nn.Module):
             )
             in_channels = feature
 
-        layers.append(
-            nn.Conv2d(
-                in_channels,
-                1,
-                kernel_size=4,
-                stride=1,
-                padding=1,
-                padding_mode="reflect",
-            )
-        )
+        # layers.append(
+        #     nn.Conv2d(
+        #         in_channels,
+        #         1,
+        #         kernel_size=4,
+        #         stride=1,
+        #         padding=1,
+        #         padding_mode="reflect",
+        #     )
+        # )
+        self.pooling = nn.AdaptiveAvgPool2d((1, 1))
+        self.fc = nn.Linear(512, 2)
 
         self.model = nn.Sequential(*layers)
 
     def forward(self, x, y):
         x = torch.cat([x, y], dim=1)
         x = self.initial(x)
-        return self.model(x)
+        x = self.model(x)
+
+        x = self.pooling(x)
+        x = x.squeeze(-1).squeeze(-1)
+        x = self.fc(x)
+
+        return x
 
 
 def test():
@@ -74,7 +82,8 @@ def test():
     y = torch.randn((1, 3, 286, 286))
     model = Discriminator()
     preds = model(x, y)
-    assert preds.shape == torch.Size([1, 1, 30, 30])
+    print(preds.shape)
+    # assert preds.shape == torch.Size([1, 1, 30, 30])
 
 
 test()

@@ -82,7 +82,7 @@ class UnetGenerator(nn.Module):
             nn.ConvTranspose2d(
                 features * 2, in_channels, kernel_size=4, stride=2, padding=1
             ),
-            nn.Tanh(),
+            nn.Sigmoid(),
         )
 
     def forward(self, x):
@@ -105,6 +105,11 @@ class UnetGenerator(nn.Module):
         up7 = self.up7(torch.cat([up6, d2], 1))
 
         return self.final_up(torch.cat([up7, d1], 1))
+
+    def generate(self, x):
+        with torch.no_grad():
+            pred = self(x)
+        return pred.cpu()
 
 
 def test():

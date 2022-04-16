@@ -1,6 +1,7 @@
 import torch
 import config
 from torchvision.utils import save_image
+import matplotlib.pyplot as plt
 
 
 def save_some_examples(gen, val_loader, epoch, folder):
@@ -36,3 +37,14 @@ def load_checkpoint(checkpoint_file, model, optimizer, lr):
     # and it will lead to many hours of debugging \:
     for param_group in optimizer.param_groups:
         param_group["lr"] = lr
+
+
+def display_progress(
+    cond: torch.Tensor, fake: torch.Tensor, real: torch.Tensor, figsize=(10, 12)
+):
+    fig, ax = plt.subplots(len(cond), 3, figsize=(10, 3 * len(cond)), squeeze=False)
+    for i in range(len(cond)):
+        ax[i][0].imshow((cond[i] * 0.5 + 0.5).permute(1, 2, 0))
+        ax[i][2].imshow((fake[i] * 0.5 + 0.5).permute(1, 2, 0))
+        ax[i][1].imshow((real[i] * 0.5 + 0.5).permute(1, 2, 0))
+    plt.show()
