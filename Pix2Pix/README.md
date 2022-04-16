@@ -6,7 +6,7 @@ If you don't have a dataset you could rather download it by following lines:
 <pre><code>wget http://efrosgans.eecs.berkeley.edu/pix2pix/datasets/facades.tar.gz
 tar -xvf facades.tar.gz</code></pre>
 
-<div align=center><img width="40%" src="generated/input_305.png" /><img width="40%" src="generated/y_gen_336.png" /></div>
+<div align=center><img width="40%" src="generated/sample" /></div>
 
 Sorry, I haven't waited the convergence
 
