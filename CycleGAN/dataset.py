@@ -45,6 +45,6 @@ if __name__ == "__main__":
         print(x.shape)
         break
     fig, ax = plt.subplots(3, 2, figsize=(10, 15))
-    for i in range(1):
+    for i in range(3):
         ax[i][0].imshow(dataset.__getitem__(i)[0].permute(1, 2, 0))
         ax[i][1].imshow(dataset.__getitem__(i)[1].permute(1, 2, 0))

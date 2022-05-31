@@ -9,9 +9,7 @@ class Block(nn.Module):
             nn.Conv2d(in_channels, out_channels, padding_mode="reflect", **kwargs)
             if down
             else nn.ConvTranspose2d(in_channels, out_channels, **kwargs),
-            nn.InstanceNorm2d(
-                out_channels, affine=True
-            ),
+            nn.InstanceNorm2d(out_channels, affine=True),
             nn.ReLU(inplace=True) if use_act else nn.Identity(),
         )
 
@@ -114,4 +112,3 @@ def test():
 
 
 test()
-
