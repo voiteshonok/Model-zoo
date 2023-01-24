@@ -21,3 +21,8 @@ Target - "a man sleeping in a green room on a couch ."
 
 After 50 epochs:
 ![](step49.png)
+
+inspired by:
+[bentrevett](https://github.com/bentrevett/pytorch-sentiment-analysis)
+and
+[AladdinPersson](https://www.youtube.com/watch?v=EoGUlvhRYpk&t=1482s&ab_channel=AladdinPersson)
