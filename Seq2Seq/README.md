@@ -23,6 +23,6 @@ After 50 epochs:
 ![](step49.png)
 
 inspired by:
-[bentrevett](https://github.com/bentrevett/pytorch-sentiment-analysis)
+[bentrevett](https://github.com/bentrevett/pytorch-seq2seq)
 and
 [AladdinPersson](https://www.youtube.com/watch?v=EoGUlvhRYpk&t=1482s&ab_channel=AladdinPersson)
